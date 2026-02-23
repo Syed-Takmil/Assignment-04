@@ -2,6 +2,7 @@
 
 
 
+
 let interview=[];
 let rejected=[];
 
@@ -13,6 +14,7 @@ const interviewSection = document.getElementById("interview-section");
 const rejectedSection = document.getElementById("rejected-section");
 
 function UpdateCounts() {
+
 // Count Holders
 
 const TotalJobs=allSection.querySelectorAll('.job-card').length;
@@ -71,33 +73,57 @@ function Toggle(id){
 
     // For Interview Section
 // Event-delegate
-document.addEventListener('click', function(event){
- if(event.target.classList.contains('apply-btn')){
-    const jobCard=event.target.closest('.job-card');
-    const companyName=jobCard.querySelector('.company-name').innerText;
-    const JobTitle=jobCard.children[1].children[0].innerText;
-    const Desc=jobCard.querySelector('.description').innerText;
-    const work=jobCard.querySelector('.work').innerText;
-    jobCard.querySelector('.apply-status').innerText='Applied';
-    const jobData={
-        companyName,
-        JobTitle,
-        Desc,
-        work,
-            status:'Applied'
-    }
-    const isAlreadyInInterview=interview.find(job=>job.JobTitle===JobTitle);
-   if(!isAlreadyInInterview){
-    interview.push(jobData);
-}
+document.querySelectorAll('#all-section, #interview-section, #rejected-section').forEach(section => {
+    section.addEventListener('click', function(event) {
+        const jobCard = event.target.closest('.job-card');
+        if(!jobCard) return; // Ignore clicks outside cards
 
+        const companyName = jobCard.querySelector('.company-name').innerText;
+        const JobTitle = jobCard.children[1].children[0].innerText;
+        const Desc = jobCard.querySelector('.description').innerText;
+        const work = jobCard.querySelector('.work').innerText;
 
-rejected = rejected.filter(job => job.JobTitle !== JobTitle);
-jobCard.querySelector('.apply-status').innerText='Applied';
-renderInterviewSection();
-renderRejectedSection();
-}
-renderInterviewSection();});
+        //  INTERVIEW BUTTON
+        if(event.target.classList.contains('apply-btn')){
+            const status = jobCard.querySelector('.apply-status');
+            status.innerText = 'Applied';
+            status.style.backgroundColor = '#10B981';
+            status.style.color = 'white';
+            rejected = rejected.filter(job => job.JobTitle !== JobTitle);
+
+        
+            if(!interview.find(job => job.JobTitle === JobTitle)){
+                interview.push({ companyName, JobTitle, Desc, work, status:'Applied' });
+            }
+
+            renderInterviewSection();
+            renderRejectedSection();
+        }
+
+        // REJECT BUTTON
+        if(event.target.classList.contains('reject-btn')){
+            const status = jobCard.querySelector('.apply-status');
+            status.innerText = 'Rejected';
+            status.style.backgroundColor = '#EF4444';
+            status.style.color = 'white';
+
+            // Remove from interview
+            interview = interview.filter(job => job.JobTitle !== JobTitle);
+
+            // Add to rejected if not already there
+            if(!rejected.find(job => job.JobTitle === JobTitle)){
+                rejected.push({ companyName, JobTitle, Desc, work, status:'Rejected' });
+            }
+
+            renderInterviewSection();
+            renderRejectedSection();
+        }
+
+        // Update counts
+        UpdateCounts();
+    });
+});
+
 // Rendering Interview Section
 function renderInterviewSection(){
     interviewSection.innerHTML='';
@@ -121,7 +147,7 @@ function renderInterviewSection(){
 
 <div class="description flex text-[#64748B] font-regular text-[14px] mb-5">${job.Desc}</div>
         
-            <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2 apply-status" >
+            <div class="applied-btn btn bg-green-600 font-medium text-[14px] text-white mb-2 apply-status" >
                 ${job.status}
             </div>
             <p class="work text-[#323B49] font-regular text-[14px] mb-5">
@@ -139,37 +165,6 @@ function renderInterviewSection(){
     UpdateCounts();
 
 }
-
-// For Rejected Section
-
-// Event-delegate
-
-document.addEventListener('click', function(event){
- if(event.target.classList.contains('reject-btn')){
-    const jobCard=event.target.closest('.job-card');
-    const companyName=jobCard.querySelector('.company-name').innerText;
-    const JobTitle=jobCard.children[1].children[0].innerText;
-    const Desc=jobCard.querySelector('.description').innerText;
-    const work=jobCard.querySelector('.work').innerText;
-jobCard.querySelector('.apply-status').innerText='Rejected';
-    const jobData={
-        companyName,
-        JobTitle,
-        Desc,
-        work,
-        status:'Rejected'
-    }
-    const isAlready=rejected.find(job=>job.JobTitle===JobTitle);
-   if(!isAlready){
-    rejected.push(jobData);
-}
-
-interview = interview.filter(job => job.JobTitle !== JobTitle);
-
-renderInterviewSection();
-renderRejectedSection();
-}
-renderRejectedSection();});
 
 // Rendering Rejected Section
 
@@ -195,7 +190,7 @@ function renderRejectedSection(){
 
 <div class="description flex text-[#64748B] font-regular text-[14px] mb-5">${job.Desc}</div>
         
-            <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2 apply-status" >
+            <div class="applied-btn btn bg-red-500 font-medium text-[14px] text-white mb-2 apply-status" >
                 ${job.status}
             </div>
             <p class="work text-[#323B49] font-regular text-[14px] mb-5">
@@ -223,4 +218,14 @@ document.getElementById('rejected-button').addEventListener('click', function(){
 });
 document.getElementById('all-button').addEventListener('click', function(){
     count.innerText=document.querySelectorAll('.job-card').length;
-}); 
+});
+
+document.querySelectorAll('.delete-btn')
+.forEach(btn=>{
+    btn.addEventListener('click', function(){
+        const jobCard = btn.closest('.job-card');
+        jobCard.remove();
+            UpdateCounts();
+             const jobCount = document.getElementById("job-count");
+            jobCount.innerText = parseInt(jobCount.innerText) - 1;
+    })});
