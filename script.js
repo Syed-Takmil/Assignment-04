@@ -235,16 +235,22 @@ document.getElementById('rejected-button').addEventListener('click', function(){
     count.innerText=rejected.length;
 });
 document.getElementById('all-button').addEventListener('click', function(){
-    count.innerText=document.querySelectorAll('.job-card').length;
+    count.innerText=document.getElementById('all-section').querySelectorAll('.job-card').length;
 });
 
-document.querySelectorAll('.delete-btn')
-.forEach(btn=>{
-    btn.addEventListener('click', function(){
-        const jobCard = btn.closest('.job-card');
-        jobCard.remove();
+//  delete button
+document.querySelectorAll('#all-section, #interview-section, #rejected-section')
+.forEach(section => {
+    section.addEventListener('click', function(event) {
+        if(event.target.closest('.delete-btn')){ 
+            const jobCard = event.target.closest('.job-card');
+          
+            jobCard.remove();
+
+           
             UpdateCounts();
-             const jobCount = document.getElementById("job-count");
-            jobCount.innerText = parseInt(jobCount.innerText) - 1;
+           const jobCount = document.getElementById("job-count"); jobCount.innerText = parseInt(jobCount.innerText) - 1;
             ShowNoJobsMessage();
-    })});
+        }
+    });
+});
