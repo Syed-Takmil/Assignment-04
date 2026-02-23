@@ -27,7 +27,7 @@
 </style>
 </head>
 
-<body class="mt-[60px] bg-[#F8FAFC] w-full px-[15.3%] min-h-screen">
+<body class=" container mt-[60px] bg-[#F8FAFC] w-full px-[15.3%] min-h-screen">
         <h1 class="text-[32px] font-bold text-start">Job Application Tracker</h1>
 
 
@@ -40,28 +40,29 @@
         </div>
 
         <div class="interview grid items-center bg-white rounded-lg p-5 font-medium text-[14px]">Interview 
-            <span class="interview-count  text-green-500 font-bold text-[24px]" >0</span></div>
+            <span class="  text-green-500 font-bold text-[24px]" id="interview-count">0</span></div>
 
-        <div class="rejected grid items-center bg-white rounded-lg p-5 font-medium text-[14px]">Rejected <span class="rejected-count text-red-600 font-bold text-[24px]">0</span></div>
+        <div class="rejected grid items-center bg-white rounded-lg p-5 font-medium text-[14px]">Rejected <span class=" text-red-600 font-bold text-[24px]" id="rejected-count">0</span></div>
     </div>
 
     <!-- Job-Board Section -->
      
-    <div class="available-job-section flex justify-between mt-[30px] mb-[24px]">
+    <div class=" flex justify-between mt-[30px] mb-[24px]">
         <h3 class="text-[20px] font-semibold">Available Jobs</h3>
      <p class="text-[16px] font-medium"> <span id="job-count">8</span>
  jobs</p>
     </div>
         <!-- navbar -->
          <nav class="gap-2 flex mb-[16px]">
-            <button class="btn ">All</button>
-            <button class="btn ">Interview</button>
-            <button class="btn">Rejected</button>
+            <button class="btn " onclick="Toggle('all-button'); ShowOnly('all-section')" id="all-button">All</button>
+            <button class="btn" onclick="Toggle('interview-button'); ShowOnly('interview-section')" id="interview-button">Interview</button>
+            <button class="btn" onclick="Toggle('rejected-button'); ShowOnly('rejected-section')" id="rejected-button">Rejected</button>
          </nav>
 
-
-         <!-- Job Cards -->
-          <div class="job-cards grid grid-cols-1  gap-4">
+<!-- All Section -->
+ <!-- id="all-section" -->
+ <div id="all-section" class=" grid grid-cols-1  gap-4">
+    
 
             <!-- Job Card-01 -->
 
@@ -87,7 +88,7 @@
 Full-time•
  $130,000 - $175,000</div>
         
-            <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2" >
+            <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2 apply-status" >
                 Not Applied
             </div>
             <p class=" text-[#323B49] font-regular text-[14px] mb-5">
@@ -95,8 +96,8 @@ Full-time•
             </p>
             
             <div class="buttons flex gap-2">
-                <button class="btn py-3 px-2 border-[#10B981] text-[#10B981] rounded-[4px]">INTERVIEW</button>
-                <button class="btn border-[#EF4444] text-[#EF4444] rounded-[4px]">REJECTED</button></div>
+                <button class="btn py-3 px-2 border-[#10B981] text-[#10B981] rounded-[4px] apply-btn">INTERVIEW</button>
+                <button class="btn border-[#EF4444] text-[#EF4444] rounded-[4px] reject-btn">REJECTED</button></div>
           </div>
 
           <!-- Job Card-02 -->
@@ -111,7 +112,7 @@ Full-time•
             </div>
  <div class="flex items-center justify-between">
                <div class="job title font-regular text-[16px] text-[#64748B] mb-5">
-                React Native Developer </div>
+                Web Designer & Developer</div>
                 <div class="rounded-full border border-[#F1F2F4] p-2 btn delete-btn">
                     <i class="fa-regular fa-trash-can  "></i>
                 
@@ -124,7 +125,7 @@ Part-time
 •
  $80,000 - $120,000</div>
         
-            <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2" >
+            <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2  apply-status" >
                 Not Applied
             </div>
             <p class=" text-[#323B49] font-regular text-[14px] mb-5">
@@ -132,8 +133,8 @@ Part-time
             </p>
 
             <div class="buttons flex gap-2">
-                <button class="btn py-3 px-2 border-[#10B981] text-[#10B981] rounded-[4px]">INTERVIEW</button>
-                <button class="btn border-[#EF4444] text-[#EF4444] rounded-[4px]">REJECTED</button></div>
+                <button class="btn py-3 px-2 border-[#10B981] text-[#10B981] rounded-[4px] apply-btn">INTERVIEW</button>
+                <button class="btn border-[#EF4444] text-[#EF4444] rounded-[4px] reject-btn">REJECTED</button></div>
           </div>
 
           <!-- Card-03 -->
@@ -149,7 +150,7 @@ Part-time
 
  <div class="flex items-center justify-between">
                <div class="job title font-regular text-[16px] text-[#64748B] mb-5">
-                React Native Developer </div>
+               Data Visualization Specialist </div>
                 <div class="rounded-full border border-[#F1F2F4] p-2 btn delete-btn">
                     <i class="fa-regular fa-trash-can  "></i>
                 
@@ -162,7 +163,7 @@ Part-time
  •
  $125,000 - $165,000</div>
         
-            <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2" >
+            <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2 apply-status" >
                 Not Applied
             </div>
             <p class=" text-[#323B49] font-regular text-[14px] mb-5">
@@ -170,8 +171,8 @@ Part-time
             </p>
 
             <div class="buttons flex gap-2">
-                <button class="btn py-3 px-2 border-[#10B981] text-[#10B981] rounded-[4px]">INTERVIEW</button>
-                <button class="btn border-[#EF4444] text-[#EF4444] rounded-[4px]">REJECTED</button></div>
+                <button class="btn py-3 px-2 border-[#10B981] text-[#10B981] rounded-[4px] apply-btn">INTERVIEW</button>
+                <button class="btn border-[#EF4444] text-[#EF4444] rounded-[4px] reject-btn">REJECTED</button></div>
           </div>
 
           <!-- Job Card-04 -->
@@ -187,7 +188,7 @@ Part-time
 
   <div class="flex items-center justify-between">
                <div class="job title font-regular text-[16px] text-[#64748B] mb-5">
-                React Native Developer </div>
+                Backend Developer </div>
                 <div class="rounded-full border border-[#F1F2F4] p-2 btn delete-btn">
                     <i class="fa-regular fa-trash-can  "></i>
                 
@@ -200,7 +201,7 @@ Part-time
  •
  $140,000 - $190,000</div>
         
-            <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2" >
+            <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2  apply-status" >
                 Not Applied
             </div>
             <p class=" text-[#323B49] font-regular text-[14px] mb-5">
@@ -208,8 +209,8 @@ Part-time
             </p>
 
             <div class="buttons flex gap-2">
-                <button class="btn py-3 px-2 border-[#10B981] text-[#10B981] rounded-[4px]">INTERVIEW</button>
-                <button class="btn border-[#EF4444] text-[#EF4444] rounded-[4px]">REJECTED</button></div>
+                <button class="btn py-3 px-2 border-[#10B981] text-[#10B981] rounded-[4px] apply-btn">INTERVIEW</button>
+                <button class="btn border-[#EF4444] text-[#EF4444] rounded-[4px] reject-btn">REJECTED</button></div>
           </div>
 
           <!-- Job Card-05 -->
@@ -225,7 +226,7 @@ Part-time
 
   <div class="flex items-center justify-between">
                <div class="job title font-regular text-[16px] text-[#64748B] mb-5">
-                React Native Developer </div>
+               UI/UX Engineer</div>
                 <div class="rounded-full border border-[#F1F2F4] p-2 btn delete-btn">
                     <i class="fa-regular fa-trash-can  "></i>
                 
@@ -238,7 +239,7 @@ Part-time
  •
  $110,000 - $150,000</div>
         
-            <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2" >
+            <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2 apply-status" >
                 Not Applied
             </div>
             <p class=" text-[#323B49] font-regular text-[14px] mb-5">
@@ -246,8 +247,8 @@ Part-time
             </p>
 
             <div class="buttons flex gap-2">
-                <button class="btn py-3 px-2 border-[#10B981] text-[#10B981] rounded-[4px]">INTERVIEW</button>
-                <button class="btn border-[#EF4444] text-[#EF4444] rounded-[4px]">REJECTED</button></div>
+                <button class="btn py-3 px-2 border-[#10B981] text-[#10B981] rounded-[4px] apply-btn">INTERVIEW</button>
+                <button class="btn border-[#EF4444] text-[#EF4444] rounded-[4px] reject-btn">REJECTED</button></div>
           </div>
 
           <!-- Job Card-06 -->
@@ -263,7 +264,7 @@ Part-time
 
     <div class="flex items-center justify-between">
                <div class="job title font-regular text-[16px] text-[#64748B] mb-5">
-                React Native Developer </div>
+                JavaScript Developer</div>
                 <div class="rounded-full border border-[#F1F2F4] p-2 btn delete-btn">
                     <i class="fa-regular fa-trash-can  "></i>
                 
@@ -301,7 +302,7 @@ Full-time
 
      <div class="flex items-center justify-between">
                <div class="job title font-regular text-[16px] text-[#64748B] mb-5">
-                React Native Developer </div>
+               Full Stack Engineer </div>
                 <div class="rounded-full border border-[#F1F2F4] p-2 btn delete-btn">
                     <i class="fa-regular fa-trash-can  "></i>
                 
@@ -339,7 +340,7 @@ Full-time
 
  <div class="flex items-center justify-between">
                <div class="job title font-regular text-[16px] text-[#64748B] mb-5">
-                React Native Developer </div>
+                Senior Frontend Developer </div>
                 <div class="rounded-full border border-[#F1F2F4] p-2 btn delete-btn">
                     <i class="fa-regular fa-trash-can  "></i>
                 
@@ -363,7 +364,39 @@ Full-time
                 <button class="btn py-3 px-2 border-[#10B981] text-[#10B981] rounded-[4px]">INTERVIEW</button>
                 <button class="btn border-[#EF4444] text-[#EF4444] rounded-[4px]">REJECTED</button></div>
           </div>
+        
+
+
+          <!-- No Jobs Available Section -->
+          <div class=" bg-white mt-4 grid grid-cols-1 items-center gap-5 place-items-center py-10 px-[40px] rounded-lg hidden" id="no-jobs-section">
+            <img src="jobs.png" alt="">
+            <h1 class="text-center text-[#323B49] font-semibold text-[24px]">No Jobs Available</h1>
+            <p class="text-[16px] font-regular text-[#64748B]">Check back soon for new job opportunities</p>
           </div>
-          <script src="home.js"></script>
+            </div>
+
+
+
+          <!-- InterView Section -->
+
+<div  id="interview-section">
+      <div class=" bg-white mt-4 grid grid-cols-1 items-center gap-5 place-items-center py-10 px-[40px] rounded-lg" id="no-jobs-section">
+            <img src="jobs.png" alt="">
+            <h1 class="text-center text-[#323B49] font-semibold text-[24px]">No Jobs Available</h1>
+            <p class="text-[16px] font-regular text-[#64748B]">Check back soon for new job opportunities</p>
+          </div>
+</div> 
+
+<!-- Rejected Section -->
+
+ <div id="rejected-section">
+      <div class=" bg-white mt-4 grid grid-cols-1 items-center gap-5 place-items-center py-10 px-[40px] rounded-lg " id="no-jobs-section">
+            <img src="jobs.png" alt="">
+            <h1 class="text-center text-[#323B49] font-semibold text-[24px]">No Jobs Available</h1>
+            <p class="text-[16px] font-regular text-[#64748B]">Check back soon for new job opportunities</p>
+          </div>
+ </div>
+
+        <script src="script.js"></script>
 </body>
 </html>
