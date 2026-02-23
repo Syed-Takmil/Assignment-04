@@ -61,15 +61,33 @@ function Toggle(id){
     document.getElementById(id).classList.add('bg-blue-400','text-white');
 }
 
-// function ShowNoJobsMessage(){
-//     if(interview.length===0){   
-//     const noJobsSection=document.getElementById('no-jobs-section');
-//     noJobsSection.classList.remove('hidden');
-// }}
-// if(TotalJobs===0){
-//     const noJobsSection=document.getElementById('no-jobs-section');
-//     noJobsSection.classList.remove('hidden');
-// }
+function ShowNoJobsMessage() {
+    // Sections
+    const noJobsSectionAll = document.getElementById('no-jobs-section-all');
+    const noJobsSectionInterview = document.getElementById('no-jobs-section-interview');
+    const noJobsSectionRejected = document.getElementById('no-jobs-section-rejected');
+
+    //  ALL section
+    if(allSection.querySelectorAll('.job-card').length === 0){
+        noJobsSectionAll.classList.remove('hidden');
+    } else {
+        noJobsSectionAll.classList.add('hidden');
+    }
+
+    //  for INTERVIEW section
+    if(interview.length === 0){
+        noJobsSectionInterview.classList.remove('hidden');
+    } else {
+        noJobsSectionInterview.classList.add('hidden');
+    }
+
+    //  for REJECTED section
+    if(rejected.length === 0){
+        noJobsSectionRejected.classList.remove('hidden');
+    } else {
+        noJobsSectionRejected.classList.add('hidden');
+    }
+}
 
     // For Interview Section
 // Event-delegate
@@ -228,4 +246,5 @@ document.querySelectorAll('.delete-btn')
             UpdateCounts();
              const jobCount = document.getElementById("job-count");
             jobCount.innerText = parseInt(jobCount.innerText) - 1;
+            ShowNoJobsMessage();
     })});
