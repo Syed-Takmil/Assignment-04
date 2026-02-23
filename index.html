@@ -32,7 +32,7 @@
 
 
         <!-- Count Holder Section -->
-    <div class="count-holder grid grid-cols-1 md:grid-cols-3  gap-4 mt-[20px]  pb-[30px] border-b-1">
+    <div class="count-holder lg:sticky lg:top-0 lg:z-20 grid grid-cols-1 md:grid-cols-3  gap-4 mt-[20px]  pb-[30px] border-b-1">
 
         <div class="total grid items-center bg-white rounded-lg p-5 font-medium text-[14px] ">
             Total <br>
@@ -56,6 +56,7 @@
          <nav class="gap-2 flex mb-[16px]">
             <button class="btn " onclick="Toggle('all-button'); ShowOnly('all-section')" id="all-button">All</button>
             <button class="btn" onclick="Toggle('interview-button'); ShowOnly('interview-section')" id="interview-button">Interview</button>
+
             <button class="btn" onclick="Toggle('rejected-button'); ShowOnly('rejected-section')" id="rejected-button">Rejected</button>
          </nav>
 
@@ -75,7 +76,7 @@
              Mobile First Corp
             </div>
         
- <div class="flex items-center justify-between">
+ <div class="flex items-center justify-between ">
                <div class="job title font-regular text-[16px] text-[#64748B] mb-5">
                 React Native Developer </div>
                 <div class="rounded-full border border-[#F1F2F4] p-2 btn delete-btn">
@@ -91,7 +92,7 @@ Full-time•
             <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2 apply-status" >
                 Not Applied
             </div>
-            <p class=" text-[#323B49] font-regular text-[14px] mb-5">
+            <p class="work text-[#323B49] font-regular text-[14px] mb-5">
                 Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.
             </p>
             
@@ -128,7 +129,7 @@ Part-time
             <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2  apply-status" >
                 Not Applied
             </div>
-            <p class=" text-[#323B49] font-regular text-[14px] mb-5">
+            <p class="work text-[#323B49] font-regular text-[14px] mb-5">
                 Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.
             </p>
 
@@ -166,7 +167,7 @@ Part-time
             <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2 apply-status" >
                 Not Applied
             </div>
-            <p class=" text-[#323B49] font-regular text-[14px] mb-5">
+            <p class="work text-[#323B49] font-regular text-[14px] mb-5">
              Transform complex data into compelling visualizations. Required skills: D3.js, React, and strong analytical thinking.
             </p>
 
@@ -204,7 +205,7 @@ Part-time
             <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2  apply-status" >
                 Not Applied
             </div>
-            <p class=" text-[#323B49] font-regular text-[14px] mb-5">
+            <p class="work text-[#323B49] font-regular text-[14px] mb-5">
               Design and maintain scalable backend systems using Python and AWS. Work with modern DevOps practices and cloud infrastructure.
             </p>
 
@@ -242,7 +243,7 @@ Part-time
             <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2 apply-status" >
                 Not Applied
             </div>
-            <p class=" text-[#323B49] font-regular text-[14px] mb-5">
+            <p class="work text-[#323B49] font-regular text-[14px] mb-5">
                Create beautiful and functional user interfaces for our suite of products. Strong design skills and frontend development expertise required.
             </p>
 
@@ -277,16 +278,16 @@ Full-time
 •
  $130,000 - $170,000</div>
         
-            <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2" >
+            <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2 apply-status" >
                 Not Applied
             </div>
-            <p class=" text-[#323B49] font-regular text-[14px] mb-5">
+            <p class="work text-[#323B49] font-regular text-[14px] mb-5">
                Build enterprise applications with JavaScript and modern frameworks. We offer competitive compensation, health insurance, and professional development opportunities.
             </p>
 
             <div class="buttons flex gap-2">
-                <button class="btn py-3 px-2 border-[#10B981] text-[#10B981] rounded-[4px]">INTERVIEW</button>
-                <button class="btn border-[#EF4444] text-[#EF4444] rounded-[4px]">REJECTED</button></div>
+                <button class="btn py-3 px-2 border-[#10B981] text-[#10B981] rounded-[4px] apply-btn">INTERVIEW</button>
+                <button class="btn border-[#EF4444] text-[#EF4444] rounded-[4px] reject-btn">REJECTED</button></div>
           </div>
 
           <!-- Job Card-07 -->
@@ -315,16 +316,16 @@ Full-time
 •
  $120,000 - $160,000</div>
         
-            <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2" >
+            <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2 apply-status" >
                 Not Applied
             </div>
-            <p class=" text-[#323B49] font-regular text-[14px] mb-5">
+            <p class="work text-[#323B49] font-regular text-[14px] mb-5">
                Join our fast-growing startup and work on our core platform. Experience with Node.js and React required. Great benefits and equity package included.
             </p>
 
             <div class="buttons flex gap-2">
-                <button class="btn py-3 px-2 border-[#10B981] text-[#10B981] rounded-[4px]">INTERVIEW</button>
-                <button class="btn border-[#EF4444] text-[#EF4444] rounded-[4px]">REJECTED</button></div>
+                <button class="btn py-3 px-2 border-[#10B981] text-[#10B981] rounded-[4px] apply-btn">INTERVIEW</button>
+                <button class="btn border-[#EF4444] text-[#EF4444] rounded-[4px] reject-btn">REJECTED</button></div>
           </div>
 
           <!-- Job Card-08 -->
@@ -353,16 +354,16 @@ Full-time
 •
  $130,000 - $175,000</div>
         
-            <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2" >
+            <div class="applied-btn btn bg-blue-200 font-medium text-[14px] text-[#002C5C] mb-2 apply-status" >
                 Not Applied
             </div>
-            <p class=" text-[#323B49] font-regular text-[14px] mb-5">
+            <p class="work text-[#323B49] font-regular text-[14px] mb-5">
               We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects.
             </p>
 
             <div class="buttons flex gap-2">
-                <button class="btn py-3 px-2 border-[#10B981] text-[#10B981] rounded-[4px]">INTERVIEW</button>
-                <button class="btn border-[#EF4444] text-[#EF4444] rounded-[4px]">REJECTED</button></div>
+                <button class="btn py-3 px-2 border-[#10B981] text-[#10B981] rounded-[4px] apply-btn">INTERVIEW</button>
+                <button class="btn border-[#EF4444] text-[#EF4444] rounded-[4px] reject-btn">REJECTED</button></div>
           </div>
         
 
